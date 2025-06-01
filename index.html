@@ -1,19 +1,584 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>My static Space</title>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<div class="card">
-			<h1>Welcome to your static Space!</h1>
-			<p>You can modify this app directly by editing <i>index.html</i> in the Files and versions tab.</p>
-			<p>
-				Also don't forget to check the
-				<a href="https://huggingface.co/docs/hub/spaces" target="_blank">Spaces documentation</a>.
-			</p>
-		</div>
-	</body>
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banger Bar | Örebro's Bästa Korv & Dryckesbar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Anpassad CSS för animationer och effekter */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1600891964599-f61ba0eaf92d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+        }
+        
+        .food-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .menu-tab.active {
+            background-color: #f59e0b;
+            color: white;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-black bg-opacity-90 text-white z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-utensils text-2xl text-amber-400"></i>
+                <span class="text-2xl font-bold">Banger Bar</span>
+            </div>
+            
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#hem" class="hover:text-amber-400 transition">Hem</a>
+                <a href="#meny" class="hover:text-amber-400 transition">Meny</a>
+                <a href="#om" class="hover:text-amber-400 transition">Om oss</a>
+                <a href="#evenemang" class="hover:text-amber-400 transition">Evenemang</a>
+                <a href="#kontakt" class="hover:text-amber-400 transition">Kontakt</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-95 px-6 py-4">
+            <a href="#hem" class="block py-2 hover:text-amber-400 transition">Hem</a>
+            <a href="#meny" class="block py-2 hover:text-amber-400 transition">Meny</a>
+            <a href="#om" class="block py-2 hover:text-amber-400 transition">Om oss</a>
+            <a href="#evenemang" class="block py-2 hover:text-amber-400 transition">Evenemang</a>
+            <a href="#kontakt" class="block py-2 hover:text-amber-400 transition">Kontakt</a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="hem" class="hero min-h-screen flex items-center justify-center text-white pt-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Gourmetkorv & <span class="text-amber-400">Kvalitetsdryck</span></h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto">Upplev Örebros bästa korvbar med handplockade korvar från lokala producenter och ett brett utbud av öl, vin och drinkar.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#meny" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">Se Meny</a>
+                <a href="#kontakt" class="bg-transparent border-2 border-white hover:bg-white hover:text-black text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">Boka Bord</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="om" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Vår <span class="text-amber-500">Historia</span></h2>
+                    <p class="text-gray-700 mb-4">Banger Bar grundades 2018 med en vision om att erbjuda Örebro något nytt - en bar där gourmetkorvar möter ett utmärkt dryckesutbud. Vi fokuserar på kvalitet, smak och gemenskap.</p>
+                    <p class="text-gray-700 mb-6">Alla våra korvar tillverkas av lokala producenter med hållbart kött och vegetariska alternativ. Vårt ölutbud innehåller både lokala mikrobryggerier och internationella favoriter.</p>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-award text-amber-500 text-2xl mr-2"></i>
+                            <span>Bästa Bar 2023</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-amber-500 text-2xl mr-2"></i>
+                            <span>4.8/5 (300+ Recensioner)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Banger Bar interiör" class="rounded-lg shadow-xl w-full">
+                    <div class="absolute -bottom-5 -right-5 bg-amber-500 text-white p-4 rounded-lg shadow-lg hidden md:block">
+                        <p class="font-bold">50+ Sorters</p>
+                        <p>Öl & Drycker</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Menu Section -->
+    <section id="meny" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Vår <span class="text-amber-500">Meny</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Upptäck vårt utbud av gourmetkorvar, öl, vin och drinkar.</p>
+            </div>
+            
+            <!-- Menu Tabs -->
+            <div class="flex justify-center mb-12">
+                <div class="inline-flex rounded-md shadow-sm">
+                    <button class="menu-tab active px-6 py-3 rounded-l-lg font-medium" data-category="korvar">Korvar</button>
+                    <button class="menu-tab px-6 py-3 font-medium" data-category="ol">Öl & Cider</button>
+                    <button class="menu-tab px-6 py-3 rounded-r-lg font-medium" data-category="drinkar">Drinkar & Vin</button>
+                </div>
+            </div>
+            
+            <!-- Korvar -->
+            <div id="korvar" class="menu-category grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="food-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1611270629569-8b357cb88da9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Klassisk Bratwurst" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Klassisk Bratwurst</h3>
+                        <p class="text-gray-600 mb-4">Tysk bratwurst med senap, karamelliserad lök & surkål</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-amber-600">95 kr</span>
+                            <span class="text-sm bg-amber-100 text-amber-800 px-2 py-1 rounded">Bästsäljare</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="food-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=739&q=80" alt="Chorizo Picante" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Chorizo Picante</h3>
+                        <p class="text-gray-600 mb-4">Kryddig spansk chorizo med paprikaaioli & rostad paprika</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-amber-600">105 kr</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="food-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1601050690123-8e8cb9d8ad0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Vegetarisk Halloumi" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Vegetarisk Halloumi</h3>
+                        <p class="text-gray-600 mb-4">Halloumikorv med tzatziki, färska grönsaker & hummus</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-amber-600">89 kr</span>
+                            <span class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">Vegetarisk</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Öl & Cider (hidden by default) -->
+            <div id="ol" class="menu-category hidden grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="food-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1610041321327-b794c052db27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Lokal IPA" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Örebro IPA</h3>
+                        <p class="text-gray-600 mb-4">Lokalt bryggd IPA med citrusaromer, 6.5%</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-amber-600">75 kr/40cl</span>
+                            <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">Lokalt</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="food-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1610041321327-b794c052db27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Belgisk Witbier" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Belgisk Witbier</h3>
+                        <p class="text-gray-600 mb-4">Fruktig vitöl med smaker av koriander och apelsin, 5%</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-amber-600">85 kr/40cl</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="food-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1610041321327-b794c052db27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Ekologisk Cider" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Ekologisk Äppelcider</h3>
+                        <p class="text-gray-600 mb-4">Torr cider från svenska äpplen, 4.7%</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-amber-600">65 kr/33cl</span>
+                            <span class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">Ekologisk</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Drinkar & Vin (hidden by default) -->
+            <div id="drinkar" class="menu-category hidden grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="food-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Banger Old Fashioned" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Banger Old Fashioned</h3>
+                        <p class="text-gray-600 mb-4">Bourbon, lönnsirap, angostura bitters, apelsinskal</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-amber-600">125 kr</span>
+                            <span class="text-sm bg-amber-100 text-amber-800 px-2 py-1 rounded">Husets special</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="food-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Rödvin" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Italienskt Rödvin</h3>
+                        <p class="text-gray-600 mb-4">Chianti Classico, torr och fruktig, kompletterar kötträtter perfekt</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-amber-600">95 kr/glas</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="food-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Korvdrink" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Korvdrinken</h3>
+                        <p class="text-gray-600 mb-4">Vodka, lingonsylt, citron och tonic - vår unika korvkombo</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-amber-600">115 kr</span>
+                            <span class="text-sm bg-red-100 text-red-800 px-2 py-1 rounded">Nyhet</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Events Section -->
+    <section id="evenemang" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Kommande <span class="text-amber-500">Evenemang</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Häng med på våra speciella kvällar med mat, dryck och underhållning.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Ölprovning" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Mikrobryggeri-Provning</h3>
+                        <p class="text-gray-600 mb-4">Varje månad - nästa 15 juni kl 19:00</p>
+                        <p class="text-gray-700 mb-4">Upptäck nya smaker med provning av lokala mikrobryggeriers öl, kompletterat med smakparningar av våra korvar.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">250 kr/person</span>
+                            <button class="text-amber-600 hover:text-amber-700 font-medium">Boka Plats</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Live Musik" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Live Musik Fredag</h3>
+                        <p class="text-gray-600 mb-4">Varje fredag från kl 21:00</p>
+                        <p class="text-gray-700 mb-4">Njut av lokala musiker och band medan du smakar på vårt utbud av drycker och korvspecialiteter.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Ingen inträdesavgift</span>
+                            <button class="text-amber-600 hover:text-amber-700 font-medium">Läs Mer</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+                    <img src="https://images.unsplash.com/photo-1547595628-c61a29f496f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Korvmakaren" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Möt Korvmakaren</h3>
+                        <p class="text-gray-600 mb-4">30 juni kl 18:00</p>
+                        <p class="text-gray-700 mb-4">En unik kväll där vår korvleverantör berättar om hantverket bakom perfekta korvar och delar med sig av smakprov.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Kostnadsfri event</span>
+                            <button class="text-amber-600 hover:text-amber-700 font-medium">Anmäl Intresse</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="py-20 bg-amber-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Vad Våra <span class="text-amber-500">Gäster</span> Säger</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Läs vad andra tycker om Banger Bar.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">"Bästa korven jag ätit i Örebro! Bra utbud av öl som kompletterar maten perfekt. Personalen är kunnig och trevlig."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Emma L." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Emma L.</h4>
+                            <p class="text-gray-600 text-sm">Återkommande gäst</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">"Fantastisk atmosfär och grymma drinkar! Deras Banger Old Fashioned är en av de bästa drinkarna jag druckit."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Anders S." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Anders S.</h4>
+                            <p class="text-gray-600 text-sm">Dryckesentusiast</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">"Perfekt ställe för efterarbet. Bra priser på ölen och de har alltid något nytt att prova. Vegetaralternativen är överraskande goda!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Lisa M." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Lisa M.</h4>
+                            <p class="text-gray-600 text-sm">Vegetarian</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="kontakt" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Kontakta <span class="text-amber-400">Oss</span></h2>
+                    <p class="text-gray-300 mb-8">Har du frågor eller vill boka bord? Kontakta oss via formuläret eller använd uppgifterna nedan.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-amber-400 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold mb-1">Adress</h4>
+                                <p class="text-gray-300">Korvgatan 12<br>702 15 Örebro</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt text-amber-400 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold mb-1">Telefon</h4>
+                                <p class="text-gray-300">019-12 34 56</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-amber-400 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold mb-1">E-post</h4>
+                                <p class="text-gray-300">info@bangerbar.se</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-clock text-amber-400 mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold mb-1">Öppettider</h4>
+                                <p class="text-gray-300">
+                                    Mån-Tors: 16:00 - 00:00<br>
+                                    Fre-Lör: 16:00 - 02:00<br>
+                                    Sön: 16:00 - 22:00
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-amber-500 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-amber-500 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-amber-500 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <form class="bg-gray-800 p-8 rounded-lg">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-300 mb-2">Namn</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-300 mb-2">E-post</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-300 mb-2">Telefon</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-300 mb-2">Meddelande</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-lg transition duration-300">Skicka Meddelande</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-black text-gray-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-utensils text-2xl text-amber-400"></i>
+                        <span class="text-2xl font-bold text-white">Banger Bar</span>
+                    </div>
+                    <p class="max-w-xs">Örebros bästa korv- och dryckesbar sedan 2018.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-white font-bold mb-4">Snabblänkar</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#hem" class="hover:text-amber-400 transition">Hem</a></li>
+                            <li><a href="#meny" class="hover:text-amber-400 transition">Meny</a></li>
+                            <li><a href="#om" class="hover:text-amber-400 transition">Om oss</a></li>
+                            <li><a href="#evenemang" class="hover:text-amber-400 transition">Evenemang</a></li>
+                            <li><a href="#kontakt" class="hover:text-amber-400 transition">Kontakt</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-white font-bold mb-4">Juridik</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-amber-400 transition">Integritetspolicy</a></li>
+                            <li><a href="#" class="hover:text-amber-400 transition">Användarvillkor</a></li>
+                            <li><a href="#" class="hover:text-amber-400 transition">Cookiepolicy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-white font-bold mb-4">Nyhetsbrev</h4>
+                        <p class="mb-4">Prenumerera för erbjudanden och nyheter.</p>
+                        <div class="flex">
+                            <input type="email" placeholder="Din e-post" class="px-4 py-2 bg-gray-800 text-white rounded-l-lg focus:outline-none w-full">
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 rounded-r-lg transition">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p>© 2023 Banger Bar. Alla rättigheter förbehållna.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-amber-400 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-amber-400 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-amber-400 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-amber-400 transition"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Floating Reservation Button -->
+    <div class="fixed bottom-6 right-6 z-40">
+        <button class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-full shadow-lg flex items-center transform hover:scale-105 transition duration-300">
+            <i class="fas fa-calendar-alt mr-2"></i> Boka Bord
+        </button>
+    </div>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Menu tab switching
+        const menuTabs = document.querySelectorAll('.menu-tab');
+        const menuCategories = document.querySelectorAll('.menu-category');
+        
+        menuTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                menuTabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all menu categories
+                menuCategories.forEach(category => {
+                    category.classList.add('hidden');
+                });
+                
+                // Show selected category
+                const categoryId = tab.getAttribute('data-category');
+                document.getElementById(categoryId).classList.remove('hidden');
+            });
+        });
+        
+        // Scroll effect for navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2');
+            }
+        });
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=bjornadolfsson/hemsida" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
 </html>
