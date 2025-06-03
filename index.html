@@ -548,34 +548,43 @@
     </script>
 <p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=bjornadolfsson/hemsida" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p>
 <script>
-    // Google Docs Integration for "Om mig"-sektionen
-    async function loadAboutContent() {
-        // Ersätt med ditt Google Docs ID (från URL:en)
-        const docId = '18Jyco0DJ13w5g_2ftgCRj7xk5aQhtKNOBrWdp4ZvN3Q'; 
-        const url = `https://docs.google.com/document/d/${docId}/export?format=txt`;
+  async function loadAboutContent() {
+    // Ersätt med ditt Google Docs ID
+    const docId = 'DITT_DOKUMENT_ID_HÄR'; 
+    const url = `https://docs.google.com/document/d/${docId}/export?format=txt`;
+    
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Kunde inte hämta dokument');
         
-        try {
-            const response = await fetch(url);
-            const text = await response.text();
-            
-            // Extrahera och formatera texten
-            const formattedText = text
-                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Fetstil
-                .replace(/\*(.*?)\*/g, '<em>$1</em>') // Kursiv
-                .replace(/\n/g, '<br>'); // Radbrytningar
-            
-            // Uppdatera "Om mig"-sektionen
-            document.querySelector('#om .text-gray-700').innerHTML = formattedText;
-            
+        const text = await response.text();
+        
+        // Extrahera och formatera texten
+        const paragraphs = text.split('\n').filter(p => p.trim() !== '');
+        let formattedText = '';
+        
+        paragraphs.forEach(p => {
+            formattedText += `<p class="text-gray-700 mb-6 leading-relaxed">${p}</p>`;
+        });
+        
+        // Uppdatera första "Om mig"-textrutan specifikt
+        const aboutSection = document.querySelector('#om .lg\\:w-2\\/3 .text-gray-700');
+        if (aboutSection) {
+            aboutSection.innerHTML = formattedText;
             console.log('Innehållet har uppdaterats från Google Docs!');
-        } catch (error) {
-            console.error('Kunde inte ladda innehåll:', error);
         }
+    } catch (error) {
+        console.error('Fel vid hämtning:', error);
+        // Visa felmeddelande för användaren om du vill
     }
+}
 
-    // Kör när sidan laddas + varje timme
-    window.addEventListener('load', loadAboutContent);
-    setInterval(loadAboutContent, 3600000); // Uppdatera varje timme
+// Kör när sidan laddas
+document.addEventListener('DOMContentLoaded', () => {
+    loadAboutContent();
+    // Uppdatera varje timme
+    setInterval(loadAboutContent, 3600000);
+});
 </script>
 </body>
 </html>
