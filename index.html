@@ -32,8 +32,28 @@
             background-color: #f8fafc;
         }
         
-        .header-with-image {
-    background: url('images/oru1.png') center/cover no-repeat;
+      .header-with-image {
+    position: relative;
+    background: url('images/oru.jpg') center/cover no-repeat;
+    min-height: 300px;
+
+
+}
+
+.header-with-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3); /* Mörk overlay för bättre textläsbarhet */
+    z-index: 0;
+}
+
+.header-with-image > * {
+    position: relative;
+    z-index: 1;
 }
         
         .timeline-item:not(:last-child)::after {
@@ -71,7 +91,7 @@
     </style>
 </head>
 <body>
-    <header class="gradient-bg text-white">
+    <header class="header-with-image text-white">
         <div class="container mx-auto px-6 py-12">
             <div class="flex flex-col md:flex-row items-center justify-between">
                 <div class="flex items-center mb-8 md:mb-0">
