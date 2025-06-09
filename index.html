@@ -3,508 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Björn Adolfsson - CV</title>
+    <title>Björn Adolfsson - Systemvetare & Nationalekonom</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#2563eb',
-                        secondary: '#7c3aed',
-                        dark: '#1e293b',
-                        light: '#f8fafc'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-            background-color: #f8fafc;
+        /* Custom CSS for anything Tailwind can't handle */
+        .header-gradient {
+            background: linear-gradient(135deg, #000080 0%, #0000CD 100%);
         }
-        
-      .header-with-image {
-    position: relative;
-    background: url('images/oru.jpg') center/cover no-repeat;
-    min-height: 300px;
-
-
-}
-
-.header-with-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3); /* Mörk overlay för bättre textläsbarhet */
-    z-index: 0;
-}
-
-.header-with-image > * {
-    position: relative;
-    z-index: 1;
-}
-        
-        .timeline-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            left: 6px;
-            top: 24px;
-            height: calc(100% - 24px);
-            width: 2px;
-            background: linear-gradient(to bottom, #2563eb, #7c3aed);
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
         }
-        
-        .hover-scale {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .hover-scale:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .skill-badge {
-            transition: all 0.3s ease;
-        }
-        
-        .skill-badge:hover {
-            transform: translateY(-2px);
-            background-color: #2563eb;
-            color: white;
-        }
-        
-        .avatar-container {
-            box-shadow: 0 0 0 5px white, 0 0 0 10px #2563eb;
+        #menu-toggle:checked + #menu {
+            display: block;
         }
     </style>
 </head>
-<body>
-    <header class="header-with-image text-white">
-        <div class="container mx-auto px-6 py-12">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="flex items-center mb-8 md:mb-0">
-                    <div class="w-24 h-24 rounded-full overflow-hidden mr-6 avatar-container">
-                        <div class="w-full h-full flex items-center justify-center bg-blue-100 text-primary text-3xl font-bold">
-                            BA
-                        </div>
-                    </div>
-                    <div>
-                        <h1 class="text-4xl font-bold">Björn Adolfsson</h1>
-                        <p class="text-blue-100 mt-2">Dubbel kandidatexamen i Nationalekonomi & Systemvetenskap</p>
-                        <p class="text-blue-100">Örebro Universitet | Examen 2026</p>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="header-gradient text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl md:text-3xl font-bold">Björn Adolfsson</h1>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <input type="checkbox" id="menu-toggle" class="hidden">
+                    <label for="menu-toggle" class="block cursor-pointer">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </label>
+                    <div id="menu" class="hidden absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-20">
+                        <a href="#profil" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Profil</a>
+                        <a href="#utbildning" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Utbildning</a>
+                        <a href="#expertomraden" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Expertområden</a>
+                        <a href="#sprak" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Språkkunskaper</a>
+                        <a href="#kontakt" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Kontakt</a>
                     </div>
                 </div>
-                <nav class="flex flex-wrap gap-4 md:gap-6">
-                    <a href="#om" class="px-4 py-2 bg-white/10 rounded-full hover:bg-white/20 transition flex items-center">
-                        <i class="fas fa-user mr-2"></i> Om mig
-                    </a>
-                    <a href="#utbildning" class="px-4 py-2 bg-white/10 rounded-full hover:bg-white/20 transition flex items-center">
-                        <i class="fas fa-graduation-cap mr-2"></i> Utbildning
-                    </a>
-                    <a href="#fardigheter" class="px-4 py-2 bg-white/10 rounded-full hover:bg-white/20 transition flex items-center">
-                        <i class="fas fa-code mr-2"></i> Färdigheter
-                    </a>
-                    <a href="#kontakt" class="px-4 py-2 bg-white/10 rounded-full hover:bg-white/20 transition flex items-center">
-                        <i class="fas fa-envelope mr-2"></i> Kontakt
-                    </a>
+                
+                <!-- Desktop navigation -->
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="#profil" class="hover:text-blue-200 transition">Profil</a></li>
+                        <li><a href="#utbildning" class="hover:text-blue-200 transition">Utbildning</a></li>
+                        <li><a href="#expertomraden" class="hover:text-blue-200 transition">Expertområden</a></li>
+                        <li><a href="#sprak" class="hover:text-blue-200 transition">Språkkunskaper</a></li>
+                        <li><a href="#kontakt" class="hover:text-blue-200 transition">Kontakt</a></li>
+                    </ul>
                 </nav>
+            </div>
+            <div class="mt-4 md:mt-6">
+                <h2 class="text-xl md:text-2xl font-light">Systemvetare & Nationalekonom</h2>
+                <p class="text-blue-200 mt-1">Förväntad examen januari 2026</p>
+                <a href="#" class="mt-6 inline-block bg-white text-blue-900 px-6 py-2 rounded-lg font-medium hover:bg-blue-100 transition shadow-md">
+                    <i class="fas fa-download mr-2"></i>Ladda ner CV
+                </a>
             </div>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12 -mt-12">
-        <section id="om" class="mb-16">
-            <div class="flex flex-col lg:flex-row gap-8">
-                <div class="lg:w-2/3">
-                    <div class="bg-white rounded-xl shadow-md p-8 hover-scale">
-                        <h2 class="text-3xl font-bold mb-6 text-dark border-b-2 border-primary pb-2 inline-block">Om mig</h2>
-                        <p class="text-gray-700 mb-6 leading-relaxed">
-                            Jag är en ambitiös och mångsidig student vid Örebro Universitet där jag för närvarande studerar två kandidatprogram: Nationalekonomi och Systemvetenskap. Min unika kombination av ekonomisk analys och teknisk kompetens ger mig en särskild förståelse för hur digitala lösningar kan användas för att lösa komplexa ekonomiska frågor.
-                        </p>
-                        <p class="text-gray-700 mb-6 leading-relaxed">
-                            Med en bakgrund inom både ekonomi och idrott från Widenska Idrottscollege har jag utvecklat en stark arbetsmoral, teamanda och förmåga att arbeta under press. Jag trivs lika bra med djupanalys av ekonomiska data som med utveckling av tekniska system som kan underlätta beslutsfattande.
-                        </p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                            <div class="bg-blue-50 p-4 rounded-lg">
-                                <h3 class="font-semibold text-primary mb-2 flex items-center">
-                                    <i class="fas fa-bullseye mr-2"></i> Mål
-                                </h3>
-                                <p class="text-gray-700">
-                                    Att kombinera mina ekonomiska och tekniska kunskaper för att utveckla innovativa lösningar inom fintech eller ekonomisk analys.
-                                </p>
-                            </div>
-                            <div class="bg-purple-50 p-4 rounded-lg">
-                                <h3 class="font-semibold text-secondary mb-2 flex items-center">
-                                    <i class="fas fa-heart mr-2"></i> Intressen
-                                </h3>
-                                <p class="text-gray-700">
-                                    Dataanalys, programmering, ekonomi, fotboll och friluftsliv. Aktiv i studentföreningar och hackathons.
-                                </p>
-                            </div>
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        <!-- Profile Section -->
+        <section id="profil" class="mb-12 md:mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-blue-900 mb-6 border-b pb-2" style="color: #000080">Profil</h2>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/4 mb-6 md:mb-0">
+                        <div class="w-32 h-32 md:w-40 md:h-40 bg-gray-300 rounded-full mx-auto flex items-center justify-center text-gray-500">
+                            <i class="fas fa-user text-5xl"></i>
                         </div>
                     </div>
-                </div>
-                
-                <div class="lg:w-1/3">
-                    <div class="bg-white rounded-xl shadow-md p-8 hover-scale sticky top-8">
-                        <h3 class="text-2xl font-bold mb-6 text-dark border-b-2 border-primary pb-2 inline-block">Nyckelinformation</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-start">
-                                <div class="bg-primary/10 text-primary p-2 rounded-lg mr-4">
-                                    <i class="fas fa-university"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium">Örebro Universitet</p>
-                                    <p class="text-gray-600 text-sm">Nationalekonomi & Systemvetenskap</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <div class="bg-primary/10 text-primary p-2 rounded-lg mr-4">
-                                    <i class="fas fa-calendar-alt"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium">Förväntad examen</p>
-                                    <p class="text-gray-600 text-sm">2026</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <div class="bg-primary/10 text-primary p-2 rounded-lg mr-4">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium">Plats</p>
-                                    <p class="text-gray-600 text-sm">Örebro, Sverige</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <div class="bg-primary/10 text-primary p-2 rounded-lg mr-4">
-                                    <i class="fas fa-language"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium">Språk</p>
-                                    <p class="text-gray-600 text-sm">Svenska, Engelska, Tyska</p>
-                                </div>
-                            </li>
+                    <div class="md:w-3/4 md:pl-8">
+                        <p class="text-lg leading-relaxed">
+                            Systemvetare och nationalekonomistudent med passion för teknik och analys. Kombinerar starka programmeringsfärdigheter med ekonomisk förståelse för att skapa datadrivna lösningar. 
+                        </p>
+                        <ul class="list-disc list-inside mt-4 text-gray-700 space-y-1">
+                            <li>Expertis inom systemutveckling och dataanalys</li>
+                            <li>Erfarenhet av både tekniska och ekonomiska analysmetoder</li>
+                            <li>Stark problemlösningsförmåga och analytisk tänkande</li>
                         </ul>
-                        
-                        <div class="mt-8">
-                            <h4 class="font-bold mb-4 text-dark">Ladda ner CV</h4>
-                            <div class="flex flex-col space-y-3">
-                                <a href="#" class="px-4 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition flex items-center justify-center">
-                                    <i class="fas fa-file-pdf mr-2"></i> PDF-version
-                                </a>
-                                <a href="#" class="px-4 py-3 bg-secondary text-white rounded-lg hover:bg-secondary/90 transition flex items-center justify-center">
-                                    <i class="fas fa-file-word mr-2"></i> Word-version
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="utbildning" class="mb-16">
-            <div class="bg-white rounded-xl shadow-md p-8 hover-scale">
-                <h2 class="text-3xl font-bold mb-8 text-dark border-b-2 border-primary pb-2 inline-block">Utbildning</h2>
-                
-                <div class="relative">
-                    <div class="timeline-item relative pl-8 pb-8">
-                        <div class="absolute left-0 w-4 h-4 rounded-full gradient-bg border-4 border-blue-100"></div>
-                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-primary">
-                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                                <h3 class="text-2xl font-bold text-dark">Örebro Universitet</h3>
-                                <span class="text-primary font-medium bg-primary/10 px-3 py-1 rounded-full">2023 - 2026 (förväntad)</span>
-                            </div>
-                            <p class="text-secondary font-semibold mb-2">Dubbel kandidatexamen i Nationalekonomi och Systemvetenskap</p>
-                            <p class="text-gray-700 mb-4">
-                                En unik kombination som ger bred kompetens inom både ekonomisk teori och praktisk systemutveckling. Programmet fokuserar på:
-                            </p>
-                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
-                                <li>Avancerad ekonomisk analys och ekonometri</li>
-                                <li>Systemdesign och informationsarkitektur</li>
-                                <li>Datadriven beslutsfattning</li>
-                                <li>Finansiella system och algoritmisk handel</li>
-                            </ul>
+        <!-- Education Section -->
+        <section id="utbildning" class="mb-12 md:mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 border-b pb-2" style="color: #000080">Utbildning</h2>
+            <div class="space-y-8">
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                        <div>
+                            <h3 class="text-xl font-semibold text-navy-800">Dubbel kandidatexamen: Systemvetenskap & Nationalekonomi</h3>
+                            <p class="text-gray-600">Universitetet (fiktivt för exemplet)</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">2020 - 2026</span>
                         </div>
                     </div>
-                    
-                    <div class="timeline-item relative pl-8 pb-8">
-                        <div class="absolute left-0 w-4 h-4 rounded-full gradient-bg border-4 border-blue-100"></div>
-                        <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-primary">
-                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                                <h3 class="text-2xl font-bold text-dark">Widenska Idrottscollege</h3>
-                                <span class="text-primary font-medium bg-primary/10 px-3 py-1 rounded-full">2015 - 2018</span>
-                            </div>
-                            <p class="text-secondary font-semibold mb-2">Ekonomiprogrammet med idrottsinriktning</p>
-                            <p class="text-gray-700 mb-4">
-                                En unik kombination av ekonomisk utbildning och elitidrott som utvecklade både mina akademiska färdigheter och min förmåga att arbeta i team under press.
-                            </p>
-                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
-                                <li>Företagsekonomi och marknadsföring</li>
-                                <li>Nationalekonomi och finans</li>
-                                <li>Idrottsledarskap och träningslära</li>
-                                <li>Projektledning och evenemangsplanering</li>
-                            </ul>
+                    <div class="mt-4">
+                        <p>Förväntad examen januari 2026</p>
+                        <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1">
+                            <li>Specialisering inom systemutveckling och programmering</li>
+                            <li>Kvantitativa analysmetoder och ekonometri</li>
+                            <li>Integration av systemvetenskap och ekonomisk teori</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                        <div>
+                            <h3 class="text-xl font-semibold text-navy-800">Ekonomiprogrammet</h3>
+                            <p class="text-gray-600">Widenska Idrottscollege</p>
                         </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">2015 - 2018</span>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Gymnasieexamen med inriktning ekonomi</li>
+                            <li>Centrala ämnen: Ekonomi, Matematik, Samhällskunskap</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="fardigheter" class="mb-16">
-            <div class="bg-white rounded-xl shadow-md p-8 hover-scale">
-                <h2 class="text-3xl font-bold mb-8 text-dark border-b-2 border-primary pb-2 inline-block">Färdigheter</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Expertise Section -->
+        <section id="expertomraden" class="mb-12 md:mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 border-b pb-2" style="color: #000080">Expertområden</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-navy-800 mb-4">Programmeringsspråk</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>SQL - Avancerad nivå</li>
+                        <li>Java - God erfarenhet</li>
+                        <li>C# - God erfarenhet</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-navy-800 mb-4">Analys & Data</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Python - God erfarenhet</li>
+                        <li>R - Praktisk erfarenhet</li>
+                        <li>Stata - Praktisk erfarenhet</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages Section -->
+        <section id="sprak" class="mb-12 md:mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 border-b pb-2" style="color: #000080">Språkkunskaper</h2>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <h3 class="text-xl font-bold mb-4 text-dark flex items-center">
-                            <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3">
-                                <i class="fas fa-chart-line"></i>
+                        <div class="flex items-center mb-2">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <i class="fas fa-flag text-blue-600"></i>
                             </div>
-                            Ekonomiska färdigheter
-                        </h3>
-                        <div class="space-y-4">
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-medium">Makroekonomisk analys</span>
-                                    <span class="text-primary font-bold">90%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="bg-primary h-2.5 rounded-full" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-medium">Finansiell modellering</span>
-                                    <span class="text-primary font-bold">85%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="bg-primary h-2.5 rounded-full" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-medium">Ekonometri</span>
-                                    <span class="text-primary font-bold">80%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="bg-primary h-2.5 rounded-full" style="width: 80%"></div>
-                                </div>
-                            </div>
+                            <h3 class="text-lg font-medium">Svenska</h3>
                         </div>
+                        <p class="text-gray-700 ml-13">Modersmål</p>
                     </div>
-                    
                     <div>
-                        <h3 class="text-xl font-bold mb-4 text-dark flex items-center">
-                            <div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center mr-3">
-                                <i class="fas fa-laptop-code"></i>
+                        <div class="flex items-center mb-2">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                <i class="fas fa-language text-blue-600"></i>
                             </div>
-                            Tekniska färdigheter
-                        </h3>
-                        <div class="space-y-4">
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-medium">Python (Pandas, NumPy)</span>
-                                    <span class="text-secondary font-bold">85%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="bg-secondary h-2.5 rounded-full" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-medium">SQL & Databaser</span>
-                                    <span class="text-secondary font-bold">80%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="bg-secondary h-2.5 rounded-full" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="font-medium">Webbutveckling</span>
-                                    <span class="text-secondary font-bold">75%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="bg-secondary h-2.5 rounded-full" style="width: 75%"></div>
-                                </div>
-                            </div>
+                            <h3 class="text-lg font-medium">Engelska</h3>
                         </div>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-xl font-bold mb-4 text-dark flex items-center">
-                            <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3">
-                                <i class="fas fa-tools"></i>
-                            </div>
-                            Verktyg & Programvara
-                        </h3>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="skill-badge px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">Excel</span>
-                            <span class="skill-badge px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">Tableau</span>
-                            <span class="skill-badge px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">Power BI</span>
-                            <span class="skill-badge px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">Stata</span>
-                            <span class="skill-badge px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">RStudio</span>
-                            <span class="skill-badge px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">Jupyter</span>
-                            <span class="skill-badge px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">Git</span>
-                            <span class="skill-badge px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">VS Code</span>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-xl font-bold mb-4 text-dark flex items-center">
-                            <div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center mr-3">
-                                <i class="fas fa-language"></i>
-                            </div>
-                            Språkfärdigheter
-                        </h3>
-                        <div class="space-y-3">
-                            <div>
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Svenska</span>
-                                    <span class="text-gray-600">Modersmål</span>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Engelska</span>
-                                    <span class="text-gray-600">Flytande</span>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Tyska</span>
-                                    <span class="text-gray-600">God förståelse</span>
-                                </div>
-                            </div>
-                        </div>
+                        <p class="text-gray-700 ml-13">Flytande i både tal och skrift</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="kontakt" class="mb-16">
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover-scale">
-                <div class="grid grid-cols-1 lg:grid-cols-2">
-                    <div class="p-8">
-                        <h2 class="text-3xl font-bold mb-6 text-dark border-b-2 border-primary pb-2 inline-block">Kontakta mig</h2>
-                        <p class="text-gray-700 mb-8">
-                            Är du intresserad av att diskutera möjligheter eller har frågor? Tveka inte att höra av dig!
-                        </p>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="bg-primary/10 text-primary p-3 rounded-lg mr-4">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-dark">E-post</h4>
-                                    <a href="mailto:bjorn.adolfsson@example.com" class="text-primary hover:underline">bjorn.adolfsson@example.com</a>
-                                </div>
+        <!-- Contact Section -->
+        <section id="kontakt">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 border-b pb-2" style="color: #000080">Kontakt</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-navy-800 mb-4">Kontaktuppgifter</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-blue-600"></i>
                             </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-primary/10 text-primary p-3 rounded-lg mr-4">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-dark">Telefon</h4>
-                                    <a href="tel:+46701234567" class="text-primary hover:underline">070-123 45 67</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-primary/10 text-primary p-3 rounded-lg mr-4">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-dark">Plats</h4>
-                                    <p class="text-gray-700">Örebro, Sverige</p>
-                                </div>
+                            <div>
+                                <h4 class="font-medium">Telefon</h4>
+                                <p class="text-gray-700">[Björns telefonnummer]</p>
                             </div>
                         </div>
-                        
-                        <div class="mt-8">
-                            <h4 class="font-bold mb-4 text-dark">Sociala medier</h4>
-                            <div class="flex space-x-4">
-                                <a href="#" class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition">
-                                    <i class="fab fa-linkedin-in text-xl"></i>
-                                </a>
-                                <a href="#" class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition">
-                                    <i class="fab fa-github text-xl"></i>
-                                </a>
-                                <a href="#" class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition">
-                                    <i class="fab fa-twitter text-xl"></i>
-                                </a>
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">E-post</h4>
+                                <p class="text-gray-700">[Björns e-post]</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Adress</h4>
+                                <p class="text-gray-700">[Björns adress]</p>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="bg-gray-50 p-8">
-                        <h3 class="text-2xl font-bold mb-6 text-dark">Skicka meddelande</h3>
-                        <form class="space-y-4">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Namn</label>
-                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-post</label>
-                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                            </div>
-                            <div>
-                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Ämne</label>
-                                <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                            </div>
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Meddelande</label>
-                                <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
-                            </div>
-                            <button type="submit" class="w-full gradient-bg text-white py-3 px-6 rounded-lg hover:opacity-90 transition font-bold">
-                                Skicka meddelande
-                                <i class="fas fa-paper-plane ml-2"></i>
-                            </button>
-                        </form>
+                    <div class="mt-6">
+                        <h4 class="font-medium mb-2">Sociala medier</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-blue-100 hover:bg-blue-200 flex items-center justify-center text-blue-600">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-blue-100 hover:bg-blue-200 flex items-center justify-center text-blue-600">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
                     </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-navy-800 mb-4">Kontaktformulär</h3>
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Namn</label>
+                            <input type="text" id="name" name="name" required 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-post</label>
+                            <input type="email" id="email" name="email" required 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
+                            <input type="tel" id="phone" name="phone" 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Meddelande</label>
+                            <textarea id="message" name="message" rows="4" required 
+                                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                        <button type="submit" 
+                                class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition font-medium">
+                            Skicka meddelande
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-dark text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <h2 class="text-2xl font-bold mb-2">Björn Adolfsson</h2>
-                    <p class="text-gray-400">Dubbel kandidatexamen i Nationalekonomi & Systemvetenskap</p>
-                    <p class="text-gray-400 mt-1">Örebro Universitet | Examen 2026</p>
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <p>&copy; 2023 Björn Adolfsson. Alla rättigheter reserverade.</p>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <a href="#" class="hover:text-blue-300"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="hover:text-blue-300"><i class="fab fa-github"></i></a>
                 </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-linkedin-in text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-github text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
-                <p>&copy; 2025 Björn Adolfsson. Alla rättigheter förbehållna.</p>
-                <p class="mt-2">Designad med ❤️ och Tailwind CSS</p>
             </div>
         </div>
     </footer>
@@ -518,55 +285,28 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+                
+                // Close mobile menu if open
+                document.getElementById('menu-toggle').checked = false;
             });
         });
-        
+
         // Form submission handling
-        const form = document.querySelector('form');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Create a sweet alert-like notification
-                const notification = document.createElement('div');
-                notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center animate-fade-in';
-                notification.innerHTML = `
-                    <i class="fas fa-check-circle mr-2"></i>
-                    Tack för ditt meddelande! Jag återkommer så snart som möjligt.
-                `;
-                
-                document.body.appendChild(notification);
-                
-                // Remove after 5 seconds
-                setTimeout(() => {
-                    notification.classList.remove('animate-fade-in');
-                    notification.classList.add('animate-fade-out');
-                    
-                    setTimeout(() => {
-                        notification.remove();
-                    }, 300);
-                }, 5000);
-                
-                form.reset();
-            });
-        }
-        
-        // Add animation classes to elements when they come into view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-up');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-        
-        document.querySelectorAll('.hover-scale').forEach(el => {
-            observer.observe(el);
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the form data to a server
+            // For demonstration, we'll just show an alert
+            alert(`Tack för ditt meddelande, ${name}! Jag återkommer till dig på ${email} så snart som möjligt.`);
+            
+            // Reset the form
+            this.reset();
         });
     </script>
-<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=bjornadolfsson/hemsida" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p>
-
 </body>
 </html>
